@@ -39,7 +39,7 @@
             key-positions = <32 31>;
         };
 
-        CTRL-Y {
+        CTRL_Y {
             bindings = <&kp LC(Y)>;
             key-positions = <0 34>;
         };
