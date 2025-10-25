@@ -68,6 +68,62 @@
             bindings = <&kp S &kp C &kp A &kp L &kp E &kp RET>;
             label = "SCALE";
         };
+
+        chamfer: chamfer {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp C &kp H &kp A &kp M &kp F &kp E &kp R &kp RET>;
+            label = "CHAMFER";
+        };
+
+        rotate: rotate {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp R &kp O &kp T &kp A &kp T &kp E &kp RET>;
+            label = "ROTATE";
+        };
+
+        trim: trim {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp T &kp R &kp I &kp M &kp RET>;
+            label = "TRIM";
+        };
+
+        mirror: mirror {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp M &kp I &kp R &kp R &kp O &kp R &kp RET>;
+            label = "MIRROR";
+        };
+
+        array_polar: arraypolar {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp A &kp R &kp R &kp A &kp Y &kp P &kp O &kp L &kp A &kp R &kp RET>;
+            label = "ARRAYPOLAR";
+        };
+
+        draw_order: draw_order {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp D &kp R &kp A &kp W &kp O &kp R &kp D &kp E &kp R &kp ENTER>;
+            label = "DRAW_ORDER";
+        };
+
+        purge: purge {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp P &kp U &kp R &kp G &kp E &kp RET>;
+            label = "PURGE";
+        };
+
+        copy: copy {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp C &kp O &kp P &kp Y &kp RET>;
+            label = "COPY";
+        };
     };
 
     keymap {
