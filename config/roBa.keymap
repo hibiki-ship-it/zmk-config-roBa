@@ -128,10 +128,9 @@
 &kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 F14  &lt 2 TAB  &lt 3 SPACE      &kp ENTER      &lt 4 F13                               &kp SLASH
             >;
 
-           sensor-bindings = <
-                &mkp SCRL_Y(10)   /* エンコーダーを1方向に回すと上スクロール */
-                &mkp SCRL_Y(-10)  /* 逆方向に回すと下スクロール */
-            >;
+            /* ロータリーエンコーダーを上下スクロールに割り当てる */
+    sensor-bindings = <&mkp SCRL_UP &mkp SCRL_DOWN>;
+
         };
 
         ACAD-1_Fn {
