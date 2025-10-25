@@ -8,7 +8,7 @@
     quick-tap-ms = <0>;
 };
 
-&trackball { 
+&trackball {
     automouse-layer = <4>;
     scroll-layers = <6>;
 };
@@ -127,9 +127,6 @@
 &mt LEFT_SHIFT Z  &kp X         &kp C         &kp V      &kp B      &kp ESC          &kp SEMICOLON  &kp N      &kp M  &mkp MB1  &mkp MB2  &kp SEMICOLON
 &kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 F14  &lt 2 TAB  &lt 3 SPACE      &kp ENTER      &lt 4 F13                             &kp SLASH
             >;
-
-        sensor-bindings = <&encoder_msc_down_up>; 
-
         };
 
         ACAD-1_Fn {
