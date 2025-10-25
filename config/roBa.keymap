@@ -12,8 +12,7 @@
     automouse-layer = <4>;
     scroll-layers = <5>;
 
-    speed = <150>;        // カーソルの速度（数値を大きくすると速くなる）
-    sensitivity = <100>;  // 感度（マウスの移動量に対する反応）
+    pointer-accel = <150>;
 };
 
 / {
