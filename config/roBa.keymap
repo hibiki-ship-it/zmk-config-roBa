@@ -128,7 +128,7 @@
 &kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 F14  &lt 2 TAB  &lt 3 SPACE      &kp ENTER      &lt 4 F13                               &kp SLASH
             >;
 
-            sensor-bindings = <&inc_dec_kp LC(LG(LEFT)) LC(LG(RIGHT))>;
+            sensor-bindings = <&inc_dec_kp C(LG(LEFT)) C(LG(RIGHT))>;
         };
 
         ACAD-1_Fn {
