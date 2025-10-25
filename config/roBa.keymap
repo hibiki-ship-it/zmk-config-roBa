@@ -23,7 +23,9 @@
     quick-tap-ms = <0>;
 };
 
-&trackball { scroll-layers = <6>; };
+&trackball { 
+    automouse-layer = <4>;
+    scroll-layers = <6>; };
 
 / {
     combos {
