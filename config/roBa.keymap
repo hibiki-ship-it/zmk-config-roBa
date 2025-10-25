@@ -38,6 +38,11 @@
             bindings = <&mkp MB3>;
             key-positions = <32 31>;
         };
+
+        CTRL+Y {
+            bindings = <&kp LC(Y)>;
+            key-positions = <0 34>;
+        };
     };
 
     macros {
