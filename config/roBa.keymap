@@ -122,9 +122,9 @@
 
         default_layer {
             bindings = <
-&kp Q             &kp W         &kp E         &kp R      &kp T                                      &kp Y      &kp U  &kp I     &kp O     &lt 6 BACKSPACE
+&kp Q             &kp W         &kp E         &kp R      &kp T                                      &kp Y      &kp U  &kp I     &kp O     &kp BACKSPACE
 &kp A             &kp S         &kp D         &kp F      &kp G      &none            &lt 5 COMMA    &kp H      &kp J  &kp K     &kp L     &kp P
-&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V      &kp B      &kp ESC          &kp SEMICOLON  &kp N      &kp M  &mkp MB1  &mkp MB2  &kp SEMICOLON
+&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V      &kp B      &kp ESC          &kp SEMICOLON  &kp N      &kp M  &mkp MB1  &mkp MB2  &lt 6 SEMICOLON
 &kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 F14  &lt 2 TAB  &lt 3 SPACE      &kp ENTER      &lt 4 F13                             &kp SLASH
             >;
 
@@ -167,8 +167,8 @@
         MOUSE {
             bindings = <
 &none  &none         &none  &none  &none                              &none           &none           &kp UP_ARROW    &none      &kp HOME
-&none  &none         &none  &none  &none  &none      &msc SCRL_RIGHT  &msc SCRL_UP    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT  &kp END
-&none  &none         &none  &none  &none  &none      &msc SCRL_LEFT   &msc SCRL_DOWN  &none           &mkp MB4        &mkp MB5   &none
+&none  &none         &none  &none  &none  &none      &msc SCRL_LEFT   &msc SCRL_UP    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT  &kp END
+&none  &none         &none  &none  &none  &none      &msc SCRL_RIGHT  &msc SCRL_DOWN  &none           &mkp MB4        &mkp MB5   &none
 &none  &kp LEFT_WIN  &none  &none  &none  &none      &none            &none                                                      &none
             >;
 
