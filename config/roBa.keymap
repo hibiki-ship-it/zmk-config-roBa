@@ -73,27 +73,36 @@
 &kp Q             &kp W         &kp E         &kp R                          &kp T                                                   &kp Y             &kp U  &kp I     &kp O     &kp BACKSPACE
 &kp A             &kp S         &kp D         &kp F                          &kp G        &none                       &kp MINUS      &kp H             &kp J  &kp K     &kp L     &kp P
 &mt LEFT_SHIFT Z  &kp X         &kp C         &kp V                          &kp B        &kp ESC                     &kp SEMICOLON  &kp N             &kp M  &mkp MB1  &mkp MB2  &kp SEMICOLON
-&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 1 INT_MUHENKAN  &lt 2 SPACE  &lt_to_layer_0 3 SPACE      &kp ENTER      &lt 4 INT_HENKAN                             &kp SLASH
+&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 1 INT_MUHENKAN  &lt 5 SPACE  &lt_to_layer_0 5 SPACE      &kp ENTER      &lt 5 INT_HENKAN                             &kp SLASH
             >;
 
             sensor-bindings = <&inc_dec_kp K_SCROLL_UP K_SCROLL_DOWN>;
         };
 
-        FUNCTION {
+        AUTOCAD-1 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                       &kp F1  &kp F2  &kp F3  &kp F4  &kp F5
-&trans  &trans  &trans  &trans  &trans  &trans      &kp F13  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
-&trans  &trans  &trans  &trans  &trans  &trans      &trans   &trans  &trans  &trans  &trans  &kp F11
-&trans  &trans  &trans  &trans  &trans  &trans      &trans   &trans                          &kp F12
+&none      &trans  &trans  &trans  &trans                       &kp F1  &kp F2  &kp F3  &kp F4  &kp F5
+&kp MINUS  &trans  &trans  &trans  &trans  &trans      &kp F13  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
+&kp ASTRK  &trans  &trans  &trans  &trans  &trans      &trans   &trans  &trans  &trans  &trans  &kp F11
+&trans     &trans  &trans  &trans  &trans  &trans      &trans   &trans                          &kp F12
             >;
         };
 
-        AUTOCAD {
+        AUTOCAD-2 {
             bindings = <
 &kp MINUS                   &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS                                                   &kp CARET         &kp AMPERSAND      &kp TILDE       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
 &kp SLASH                   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp ASTERISK  &kp LC(LA(KP_NUMBER_0))      &kp UNDERSCORE  &kp EXCLAMATION   &kp AT_SIGN        &kp HASH        &kp DOLLAR            &kp PERCENT
-&mt LEFT_SHIFT KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp PERIOD    &kp EQUAL                    &trans          &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp LEFT_BRACE  &kp RIGHT_BRACE       &kp BACKSLASH
-&trans                      &trans           &trans           &trans           &trans        &trans                       &trans          &trans                                                                     &kp PIPE
+&mt LEFT_SHIFT KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp PERIOD    &kp EQUAL                    &kp             &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp LEFT_BRACE  &kp RIGHT_BRACE       &kp BACKSLASH
+&kp                         &kp              &kp              &kp              &kp           &kp                          &kp             &kp                                                                        &kp PIPE
+            >;
+        };
+
+        NUM {
+            bindings = <
+&kp PLUS   &kp  &kp  &kp  &kp                    &kp F1  &kp F2  &kp F3  &kp F4  &kp F5
+&kp MINUS  &kp  &kp  &kp  &kp  &kp      &kp F13  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
+&kp ASTRK  &kp  &kp  &kp  &kp  &kp      &kp      &kp     &kp     &kp     &kp     &kp F11
+&kp SLASH  &kp  &kp  &kp  &kp  &kp      &kp      &kp                             &kp F12
             >;
         };
 
