@@ -99,10 +99,10 @@
 
         NUM {
             bindings = <
-&kp PLUS   &kp  &kp  &kp  &kp                    &kp F1  &kp F2  &kp F3  &kp F4  &kp F5
-&kp MINUS  &kp  &kp  &kp  &kp  &kp      &kp F13  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
-&kp ASTRK  &kp  &kp  &kp  &kp  &kp      &kp      &kp     &kp     &kp     &kp     &kp F11
-&kp SLASH  &kp  &kp  &kp  &kp  &kp      &kp      &kp                             &kp F12
+&mt LSHFT PLUS   &kp N7           &kp N8        &kp N9        &kp BACKSPACE                          &kp F1  &kp F2  &kp F3  &kp F4  &kp F5
+&mt LSHFT MINUS  &kp NUMBER_4     &kp N5        &kp NUMBER_6  &kp DELETE     &kp            &kp F13  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
+&mt LSHFT ASTRK  &kp NUMBER_1     &kp NUMBER_2  &kp NUMBER_3  &kp KP_EQUAL   &kp ENTER      &kp      &kp     &kp     &kp     &kp     &kp F11
+&mt LSHFT SLASH  &kp KP_NUMBER_0  &kp KP_DOT    &kp           &kp            &kp            &kp      &kp                             &kp F12
             >;
         };
 
