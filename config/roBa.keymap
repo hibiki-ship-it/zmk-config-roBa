@@ -61,6 +61,15 @@
         };
     };
 
+    macros {
+        scale: scale {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp S &kp C &kp A &kp L &kp E &kp RET>;
+            label = "SCALE";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
