@@ -30,7 +30,7 @@
         };
 
         CTRL_Y {
-            bindings = <&kp K_REDO>;
+            bindings = <&kp LC(Y)>;
             key-positions = <0 34>;
         };
 
