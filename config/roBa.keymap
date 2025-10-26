@@ -3,6 +3,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
+
 &mt {
     flavor = "balanced";
     quick-tap-ms = <0>;
@@ -14,6 +15,21 @@
 };
 
 / {
+    // ===== スクロール動作用ビヘイビア定義 =====
+    behaviors {
+        scroll_up: scroll_up {
+            compatible = "zmk,behavior-mouse-scroll";
+            #binding-cells = <0>;
+            direction = "up";       // 上スクロール
+        };
+
+        scroll_down: scroll_down {
+            compatible = "zmk,behavior-mouse-scroll";
+            #binding-cells = <0>;
+            direction = "down";     // 下スクロール
+        };
+    };
+
     combos {
         compatible = "zmk,combos";
 
@@ -128,8 +144,8 @@
 &kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 F14  &lt 2 TAB  &lt 3 SPACE      &kp ENTER      &lt 4 F13                               &kp SLASH
             >;
 
-            /* ロータリーエンコーダーを上下スクロールに割り当てる */
-    sensor-bindings = <&mkp SCRL_UP &mkp SCRL_DOWN>;
+           // エンコーダーでスクロール操作
+            encoder-bindings = <&scroll_up &scroll_down>;
 
         };
 
