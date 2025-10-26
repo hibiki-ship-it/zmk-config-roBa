@@ -137,7 +137,7 @@
             bindings = <
 &kp LS(LC(X))  &kp LC(LS(Y))  &scale  &chamfer  &kp LS(LA(LC(C)))                     &kp F1  &kp F2   &kp F3   &kp F4   &none
 &none          &none          &none   &none     &none              &none       &none  &kp F5  &kp F6   &kp F7   &kp F8   &none
-&none          &none          &none   &none     &none              &kp F8      &none  &kp F9  &kp F10  &kp F11  &kp F12  &none
+&kp Y          &none          &none   &none     &none              &kp F8      &none  &kp F9  &kp F10  &kp F11  &kp F12  &none
 &draw_order    &purge         &none   &none     &none              &none       &none  &none                              &none
             >;
         };
