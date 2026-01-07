@@ -19,15 +19,13 @@
     //         <&kp LEFT_ARROW>,
     //         <&kp UP_ARROW>,
     //         <&kp DOWN_ARROW>;
-
     //     tick = <10>;
     //     wait-ms = <5>;
     //     tap-ms = <5>;
     // };
 };
 
-/{
-
+/ {
     combos {
         compatible = "zmk,combos";
 
@@ -186,10 +184,10 @@
 
         MOUSE {
             bindings = <
-&none  &none         &none  &none  &none                    &none  &kp C_VOLUME_DOWN  &kp UP_ARROW    &kp C_VOLUME_UP  &kp HOME
-&none  &none         &none  &none  &none  &none      &none  &none  &kp LEFT_ARROW     &kp DOWN_ARROW  &kp RIGHT        &kp END
-&none  &none         &none  &none  &none  &none      &none  &none  &none              &mkp MB4        &mkp MB5         &none
-&none  &kp LEFT_WIN  &none  &none  &none  &none      &none  &none                                                      &kp K_POWER
+&none           &none         &none  &none  &none                    &none  &kp C_VOLUME_DOWN  &kp UP_ARROW    &kp C_VOLUME_UP  &kp HOME
+&none           &none         &none  &none  &none  &none      &none  &none  &kp LEFT_ARROW     &kp DOWN_ARROW  &kp RIGHT        &kp END
+&kp LEFT_SHIFT  &none         &none  &none  &none  &none      &none  &none  &none              &mkp MB4        &mkp MB5         &none
+&none           &kp LEFT_WIN  &none  &none  &none  &none      &none  &none                                                      &kp K_POWER
             >;
         };
 
