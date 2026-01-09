@@ -56,7 +56,7 @@
 
         Function7 {
             bindings = <&kp F7>;
-            key-positions = <10 11>;
+            key-positions = <1 2>;
         };
     };
 
