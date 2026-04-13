@@ -1,6 +1,4 @@
 #include <zephyr/dt-bindings/input/input-event-codes.h>
-#include <dt-bindings/zmk/input_transform.h>
-#include <input/processors.dtsi> /* ← この1行を追加しました */
 #include "roBa.dtsi"
 
 &default_transform {
@@ -15,16 +13,6 @@
             , <&xiao_d 7 GPIO_ACTIVE_HIGH>
             , <&gpio0 10 GPIO_ACTIVE_HIGH>
             ;
-};
-
-/ {
-    trackball_listener {
-        status = "okay";
-        compatible = "zmk,input-listener";
-        device = <&trackball>;
-        // ここで物理的な上下左右の反転を一括で処理します
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
-    };
 };
 
 &pinctrl {
