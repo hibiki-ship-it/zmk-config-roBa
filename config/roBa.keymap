@@ -2,33 +2,13 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
-#include <input/processors.dtsi>
-#include <dt-bindings/zmk/input_transform.h>
 
 &mt {
     flavor = "balanced";
     quick-tap-ms = <0>;
 };
 
-// センサーの大元で上下左右を反転させる（これが通常のカーソル移動にも効きます）
-&trackball {
-    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
-};
-
 / {
-    trackball_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball>;
-
-        scroll {
-            layers = <6>;
-            // 根元で既に反転しているので、ここではスクロールへの変換と感度調整（1/20）だけ行います
-            input-processors = 
-                <&zip_xy_to_scroll_mapper>,
-                <&zip_scroll_scaler 1 10>;
-        };
-    };
-
     combos {
         compatible = "zmk,combos";
 
