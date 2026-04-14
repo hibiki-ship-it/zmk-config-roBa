@@ -3,6 +3,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
 
 &mt {
     flavor = "balanced";
@@ -11,10 +12,14 @@
 
 / {
     trackball_listener {
+        // 1. 通常のカーソル移動の上下左右をソフトウェア的に反転させます
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
+
         scroll {
             layers = <6>;
-            // ネイティブ反転済みの信号をスクロールに変換し、感度を大幅に落とす(1/20)
+            // 2. スクロール時も反転させ、スクロール動作に変換し、感度を1/20に落とす
             input-processors = 
+                <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
                 <&zip_xy_to_scroll_mapper>,
                 <&zip_scroll_scaler 1 20>;
         };
