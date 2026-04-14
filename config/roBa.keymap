@@ -3,7 +3,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <input/processors.dtsi>
-#include <dt-bindings/zmk/input_transform.h>
 
 &mt {
     flavor = "balanced";
@@ -11,16 +10,14 @@
 };
 
 / {
-    /* ここですべての計算（反転・減速）を行います */
     trackball_listener {
-        // 通常時：X軸とY軸を反転させる
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
+        compatible = "zmk,input-listener";
+        device = <&trackball>;
 
         scroll {
             layers = <6>;
-            // スクロール時：反転 → スクロールに変換 → 1/20の速度に減速
+            // 大元で反転済みなので、ここではスクロールへの変換と減速（1/20）のみ行います
             input-processors = 
-                <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
                 <&zip_xy_to_scroll_mapper>,
                 <&zip_scroll_scaler 1 20>;
         };
