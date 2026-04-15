@@ -13,11 +13,15 @@
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
+        
+        // 1. 通常時のカーソル移動のX軸・Y軸を -1倍 して180度反転させます
+        input-processors = <&zip_xy_scaler (-1) 1>;
 
         scroll {
             layers = <6>;
-            // 大元で反転済みなので、ここではスクロールへの変換と減速（1/20）のみ行います
+            // 2. スクロール時も反転させ、スクロール動作に変換し、感度を1/20に減速します
             input-processors = 
+                <&zip_xy_scaler (-1) 1>,
                 <&zip_xy_to_scroll_mapper>,
                 <&zip_scroll_scaler 1 20>;
         };
