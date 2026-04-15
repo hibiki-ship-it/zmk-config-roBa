@@ -46,16 +46,14 @@
 
     trackball: trackball@0 {
         status = "okay";
-        // 競合を避ける最新の専用ドライバーを指定
         compatible = "pixart,pmw3610-alt";
         reg = <0>;
         spi-max-frequency = <2000000>;
-        motion-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        // ▼ ここを motion-gpios から irq-gpios に戻しました ▼
+        irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         zephyr,axis-x = <INPUT_REL_X>;
         zephyr,axis-y = <INPUT_REL_Y>;
-        // 以前設定されていた感度(CPI)をここで指定
         cpi = <400>;
-        // センサーの読み取りを物理的に反転！
         invert-x;
         invert-y;
     };
