@@ -2,18 +2,26 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
+#include <input/processors.dtsi>
 
 &mt {
     flavor = "balanced";
     quick-tap-ms = <0>;
 };
 
-// これだけでレイヤー6の時にスクロールに切り替わります（専用ドライバーの機能）
-&trackball {
-    scroll-layers = <6>;
-};
-
 / {
+    trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball>;
+
+        scroll {
+            layers = <6>;
+            input-processors = 
+                <&zip_xy_to_scroll_mapper>,
+                <&zip_scroll_scaler 1 20>;
+        };
+    };
+
     combos {
         compatible = "zmk,combos";
 
