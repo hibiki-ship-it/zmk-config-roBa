@@ -3,6 +3,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
 
 &mt {
     flavor = "balanced";
@@ -10,12 +11,19 @@
 };
 
 / {
+    /* トラックボールの信号をシステムに繋ぐ「リスナー」 */
     trackball_listener {
         compatible = "zmk,input-listener";
+        device = <&trackball>;
         
+        // 通常移動の反転（X軸・Y軸の両方を入れ替える）
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
+
         scroll {
             layers = <6>;
+            // スクロール時の反転 + 変換 + 減速(1/20)
             input-processors = 
+                <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
                 <&zip_xy_to_scroll_mapper>,
                 <&zip_scroll_scaler 1 20>;
         };
@@ -23,109 +31,30 @@
 
     combos {
         compatible = "zmk,combos";
-
-        DELcom {
-            bindings = <&kp DEL>;
-            key-positions = <9 8>;
-        };
-
-        MID {
-            bindings = <&mkp MB3>;
-            key-positions = <32 31>;
-        };
-
-        CTRL_Y {
-            bindings = <&kp Y>;
-            key-positions = <22 23>;
-        };
-
-        CAP_SLOCK {
-            bindings = <&kp CAPSLOCK>;
-            key-positions = <37 38>;
-        };
-
-        Function8 {
-            bindings = <&kp F8>;
-            key-positions = <0 1>;
-        };
-
-        Function7 {
-            bindings = <&kp F7>;
-            key-positions = <1 2>;
-        };
+        DELcom { bindings = <&kp DEL>; key-positions = <9 8>; };
+        MID { bindings = <&mkp MB3>; key-positions = <32 31>; };
+        CTRL_Y { bindings = <&kp Y>; key-positions = <22 23>; };
+        CAP_SLOCK { bindings = <&kp CAPSLOCK>; key-positions = <37 38>; };
+        Function8 { bindings = <&kp F8>; key-positions = <0 1>; };
+        Function7 { bindings = <&kp F7>; key-positions = <1 2>; };
     };
 
     macros {
-        scale: scale {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp S &kp C &kp A &kp L &kp E &kp RET>;
-        };
-
-        chamfer: chamfer {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp C &kp H &kp A &kp M &kp F &kp E &kp R &kp RET>;
-        };
-
-        rotate: rotate {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp R &kp O &kp T &kp A &kp T &kp E &kp RET>;
-        };
-
-        trim: trim {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp T &kp R &kp I &kp M &kp RET>;
-        };
-
-        mirror: mirror {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp M &kp I &kp R &kp R &kp O &kp R &kp RET>;
-        };
-
-        array_polar: arraypolar {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp A &kp R &kp R &kp A &kp Y &kp P &kp O &kp L &kp A &kp R &kp RET>;
-        };
-
-        draw_order: draw_order {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp D &kp R &kp A &kp W &kp O &kp R &kp D &kp E &kp R &kp ENTER>;
-        };
-
-        purge: purge {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp P &kp U &kp R &kp G &kp E &kp RET>;
-        };
-
-        copy: copy {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp C &kp O &kp P &kp Y &kp RET>;
-        };
-
-        explode: explode {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp E &kp X &kp P &kp L &kp O &kp D &kp E &kp RET>;
-        };
-
-        spline: spline {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp S &kp P &kp L &kp I &kp N &kp E &kp RET>;
-        };
+        scale: scale { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp S &kp C &kp A &kp L &kp E &kp RET>; };
+        chamfer: chamfer { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp C &kp H &kp A &kp M &kp F &kp E &kp R &kp RET>; };
+        rotate: rotate { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp R &kp O &kp T &kp A &kp T &kp E &kp RET>; };
+        trim: trim { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp T &kp R &kp I &kp M &kp RET>; };
+        mirror: mirror { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp M &kp I &kp R &kp R &kp O &kp R &kp RET>; };
+        array_polar: arraypolar { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp A &kp R &kp R &kp A &kp Y &kp P &kp O &kp L &kp A &kp R &kp RET>; };
+        draw_order: draw_order { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp D &kp R &kp A &kp W &kp O &kp R &kp D &kp E &kp R &kp ENTER>; };
+        purge: purge { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp P &kp U &kp R &kp G &kp E &kp RET>; };
+        copy: copy { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp C &kp O &kp P &kp Y &kp RET>; };
+        explode: explode { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp E &kp X &kp P &kp L &kp O &kp D &kp E &kp RET>; };
+        spline: spline { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp S &kp P &kp L &kp I &kp N &kp E &kp RET>; };
     };
 
     keymap {
         compatible = "zmk,keymap";
-
         default_layer {
             bindings = <
 &kp Q             &kp W         &kp E         &kp R      &kp T                                          &kp Y      &kp U  &kp I      &kp O      &kp BACKSPACE
@@ -133,7 +62,6 @@
 &mt LEFT_SHIFT Z  &kp X         &kp C         &kp V      &kp B      &kp ESC          &kp PERIOD   &kp N      &kp M  &mkp LCLK  &mkp RCLK  &lt 6 SEMICOLON
 &kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 F14  &lt 2 TAB  &lt 3 SPACE      &kp ENTER    &lt 4 F13                               &kp SLASH
             >;
-
             sensor-bindings = <&inc_dec_kp LC(LG(RIGHT_ARROW)) LC(LG(LEFT_ARROW))>;
         };
 
@@ -162,7 +90,6 @@
 &mt LSHFT ASTRK  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL      &kp ENTER      &kp SQT            &kp AMPERSAND    &kp ASTERISK  &kp BACKSLASH  &kp LEFT_BRACKET      &kp RIGHT_BRACKET
 &mt LSHFT SLASH  &kp N0        &kp PERIOD    &none         &none          &none          &kp MINUS          &kp TILDE                                                           &kp UNDERSCORE
             >;
-
             sensor-bindings = <&inc_dec_kp C_VOLUME_DOWN C_VOL_UP>;
         };
 
