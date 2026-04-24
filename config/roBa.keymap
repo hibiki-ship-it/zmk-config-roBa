@@ -16,15 +16,11 @@
         compatible = "zmk,input-listener";
         status = "okay";
         device = <&trackball>;
-        
-        // 通常移動の反転（X軸・Y軸の両方を入れ替える）
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
 
         scroll {
             layers = <6>;
-            // スクロール時の反転 + 変換 + 減速(1/20)
+            // スクロール時の変換 + 減速(1/20)
             input-processors = 
-                <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
                 <&zip_xy_to_scroll_mapper>,
                 <&zip_scroll_scaler 1 20>;
         };
