@@ -10,22 +10,27 @@
     quick-tap-ms = <0>;
 };
 
-/ {
-    /* トラックボールの信号をシステムに繋ぐ「リスナー」 */
-    trackball_listener {
-        compatible = "zmk,input-listener";
-        status = "okay";
-        device = <&trackball>;
+/* * 修正点: / { } の中ではなく、外側で直接リスナーを上書き指定します。
+ * これにより、反転処理が確実にシステムに適用されます。
+ */
+&trackball_listener {
+    status = "okay";
+    device = <&trackball>;
+    
+    // X軸・Y軸の両方を反転させる処理を確実に適用
+    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
 
-        scroll {
-            layers = <6>;
-            // スクロール時の変換 + 減速(1/20)
-            input-processors = 
-                <&zip_xy_to_scroll_mapper>,
-                <&zip_scroll_scaler 1 20>;
-        };
+    scroll {
+        layers = <6>;
+        // スクロール時も同様に反転し、スクロール信号に変換＋減速
+        input-processors = 
+            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
+            <&zip_xy_to_scroll_mapper>,
+            <&zip_scroll_scaler 1 20>;
     };
+};
 
+/ {
     combos {
         compatible = "zmk,combos";
         DELcom { bindings = <&kp DEL>; key-positions = <9 8>; };
