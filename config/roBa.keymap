@@ -12,19 +12,23 @@
 
 / {
     /* トラックボールの信号をシステムに繋ぐ「リスナー」 */
+
     trackball_listener {
         compatible = "zmk,input-listener";
         status = "okay";
         device = <&trackball>;
 
         // 通常移動：軸入れ替え ＋ 上下（Y軸）反転
+
         input-processors =
             <&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>,
             <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>;
 
         scroll {
             layers = <6>;
+
             // 修正点: スクロール時は軸入れ替えのみを行い、Y軸反転を解除して方向を修正
+
             input-processors =
                 <&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>,
                 <&zip_xy_to_scroll_mapper>,
@@ -132,6 +136,27 @@
             #binding-cells = <0>;
             bindings = <&kp S &kp P &kp L &kp I &kp N &kp E &kp RET>;
         };
+
+        OSEWANI: OSEWANI {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp F13 &kp LS(O) &kp LS(S) &kp LS(E) &kp LS(W) &kp LS(A) &kp LS(N) &kp LS(I) &kp LS(N) &kp LS(A) &kp LS(T) &kp LS(T) &kp LS(E) &kp LS(O) &kp LS(R) &kp LS(I) &kp LS(M) &kp LS(A) &kp LS(S) &kp LS(U) &kp DOT &kp SPACE &kp RET>;
+            label = "OSEWANI";
+        };
+
+        OTUKARE: OTUKARE {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp F13 &kp LS(O) &kp LS(T) &kp LS(U) &kp LS(K) &kp LS(A) &kp LS(R) &kp LS(E) &kp LS(S) &kp LS(A) &kp LS(M) &kp LS(A) &kp LS(D) &kp LS(E) &kp LS(S) &kp LS(U) &kp DOT &kp SPACE &kp RET>;
+            label = "OTUKARE";
+        };
+
+        YOROSIKU: YOROSIKU {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp F13 &kp LS(D) &kp LS(O) &kp LS(U) &kp LS(Z) &kp LS(O) &kp LS(Y) &kp LS(O) &kp LS(R) &kp LS(O) &kp LS(S) &kp LS(I) &kp LS(K) &kp LS(U) &kp LS(O) &kp LS(N) &kp LS(E) &kp LS(G) &kp LS(A) &kp LS(I) &kp LS(I) &kp LS(T) &kp LS(A) &kp LS(S) &kp LS(I) &kp LS(M) &kp LS(A) &kp LS(S) &kp LS(U) &kp DOT &kp SPACE &kp RET>;
+            label = "YOROSIKU";
+        };
     };
 
     keymap {
@@ -139,10 +164,10 @@
 
         default_layer {
             bindings = <
-&kp Q             &kp W         &kp E         &kp R      &kp T                                                  &kp Y      &kp U  &kp I      &kp O      &kp BACKSPACE
+&kp Q             &kp W         &kp E         &kp R      &kp T                                    &kp Y      &kp U  &kp I      &kp O      &kp BACKSPACE
 &kp A             &kp S         &kp D         &kp F      &kp G      &none            &lt 5 COMMA  &kp H      &kp J  &kp K      &kp L      &lt 6 P
 &mt LEFT_SHIFT Z  &kp X         &kp C         &kp V      &kp B      &kp ESC          &kp PERIOD   &kp N      &kp M  &mkp LCLK  &mkp RCLK  &kp SEMI
-&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 F14  &lt 2 TAB  &lt 3 SPACE      &kp ENTER    &lt 4 F13                                  &kp SLASH
+&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 F14  &lt 2 TAB  &lt 3 SPACE      &kp ENTER    &lt 4 F13                               &kp SLASH
             >;
 
             sensor-bindings = <&inc_dec_kp LC(LG(RIGHT_ARROW)) LC(LG(LEFT_ARROW))>;
@@ -150,28 +175,28 @@
 
         ACAD-1_Fn {
             bindings = <
-&kp LS(LC(X))  &kp LC(LS(Y))  &scale  &chamfer  &kp LS(LA(LC(C)))                      &kp F1  &kp F2   &kp F3   &kp F4   &none
-&none          &none          &none   &none     &none              &none       &none   &none   &kp F5   &kp F6   &kp F7   &kp F8   &none
-&kp Y          &none          &none   &none     &none              &kp F8      &none   &none   &kp F9   &kp F10  &kp F11  &kp F12  &none
-&draw_order    &purge         &none   &none     &none              &none       &none   &none                              &none
+&kp LS(LC(X))  &kp LC(LS(Y))  &scale       &chamfer  &kp LS(LA(LC(C)))                     &kp F1  &kp F2  &kp F3  &kp F4   &none
+&none          &none          &none        &none     &none              &none      &none   &none   &kp F5  &kp F6  &kp F7   &kp F8
+&none          &kp Y          &none        &none     &none              &none      &kp F8  &none   &none   &kp F9  &kp F10  &kp F11
+&kp F12        &none          &draw_order  &purge    &none              &none      &none   &none                            &none
             >;
         };
 
         ACAD-2_Con {
             bindings = <
-&none                 &none    &explode  &rotate  &trim                      &kp F1  &kp F2   &kp F3   &kp F4   &none
-&array_polar          &spline  &none     &none    &none  &none       &none   &kp F5  &kp F6   &kp F7   &kp F8   &none
-&none                 &none    &copy     &mirror  &none  &kp F8      &none   &kp F9  &kp F10  &kp F11  &kp F12  &none
-&kp LC(RC(NUMBER_4))  &none    &none     &none    &none  &none       &none   &none                              &none
+&none                 &none    &explode  &rotate  &trim                     &kp F1  &kp F2   &kp F3   &kp F4   &none
+&array_polar          &spline  &none     &none    &none  &none       &none  &kp F5  &kp F6   &kp F7   &kp F8   &none
+&none                 &none    &copy     &mirror  &none  &kp F8      &none  &kp F9  &kp F10  &kp F11  &kp F12  &none
+&kp LC(RC(NUMBER_4))  &none    &none     &none    &none  &none       &none  &none                              &none
             >;
         };
 
         NUM {
             bindings = <
-&mt LSHFT PLUS   &kp N7        &kp N8        &kp N9        &kp BACKSPACE                                      &kp EXCLAMATION  &kp AT_SIGN   &kp HASH       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
+&mt LSHFT PLUS   &kp N7        &kp N8        &kp N9        &kp BACKSPACE                                    &kp EXCLAMATION  &kp AT_SIGN   &kp HASH       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
 &mt LSHFT MINUS  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp DELETE     &none          &kp DOUBLE_QUOTES  &kp DOLLAR       &kp PERCENT   &kp CARET      &kp LEFT_BRACE        &kp RIGHT_BRACE
 &mt LSHFT ASTRK  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL      &kp ENTER      &kp SQT            &kp AMPERSAND    &kp ASTERISK  &kp BACKSLASH  &kp LEFT_BRACKET      &kp RIGHT_BRACKET
-&mt LSHFT SLASH  &kp N0        &kp PERIOD    &none         &none          &none          &kp MINUS          &kp TILDE                                                             &kp UNDERSCORE
+&mt LSHFT SLASH  &kp N0        &kp PERIOD    &none         &none          &none          &kp MINUS          &kp TILDE                                                           &kp UNDERSCORE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_DOWN C_VOL_UP>;
@@ -179,28 +204,28 @@
 
         MOUSE {
             bindings = <
-&none           &none         &none  &none  &none                      &none  &none           &kp UP_ARROW    &none      &kp HOME
-&none           &none         &none  &none  &none  &none      &none  &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT  &kp END
-&kp LEFT_SHIFT  &none         &none  &none  &none  &none      &none  &none  &none           &mkp MB4        &mkp MB5   &none
-&none           &kp LEFT_WIN  &none  &none  &none  &none      &none  &none                                             &kp K_POWER
+&none           &none         &none     &none      &none                    &none  &none           &kp UP_ARROW    &none      &kp HOME
+&none           &none         &none     &none      &none  &none      &none  &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT  &kp END
+&kp LEFT_SHIFT  &OSEWANI      &OTUKARE  &YOROSIKU  &none  &none      &none  &none  &none           &mkp MB4        &mkp MB5   &none
+&none           &kp LEFT_WIN  &none     &none      &none  &none      &none  &none                                             &kp K_POWER
             >;
         };
 
         Bluetooth {
             bindings = <
-&none  &none  &none  &none  &none                                &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&none  &none  &none  &none  &none  &none            &none        &none         &none         &none         &none         &none
-&none  &none  &none  &none  &none  &none            &bootloader  &none         &none         &none         &none         &bt BT_CLR
-&none  &none  &none  &none  &none  &none            &none        &none                                                   &none
+&none  &none  &none  &none  &none                          &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+&none  &none  &none  &none  &none  &none      &none        &none         &none         &none         &none         &none
+&none  &none  &none  &none  &none  &none      &bootloader  &none         &none         &none         &none         &bt BT_CLR
+&none  &none  &none  &none  &none  &none      &none        &none                                                   &none
             >;
         };
 
         Scroll {
             bindings = <
-&mt LSHFT PLUS   &kp N7        &kp N8        &kp N9        &kp BACKSPACE                                     &none  &none              &kp LC(KP_PLUS)      &none            &none
-&mt LSHFT MINUS  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp DELETE     &none          &none        &none  &kp C_VOLUME_DOWN  &kp LC(KP_SUBTRACT)  &kp C_VOLUME_UP  &none
-&mt LSHFT ASTRK  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL      &kp ENTER      &none        &none  &none              &none                &none            &none
-&mt LSHFT SLASH  &kp N0        &kp PERIOD    &none         &none          &none          &none        &none                                                           &none
+&mt LSHFT PLUS   &kp N7        &kp N8        &kp N9        &kp BACKSPACE                        &none  &none              &kp LC(KP_PLUS)      &none            &none
+&mt LSHFT MINUS  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp DELETE     &none          &none  &none  &kp C_VOLUME_DOWN  &kp LC(KP_SUBTRACT)  &kp C_VOLUME_UP  &none
+&mt LSHFT ASTRK  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL      &kp ENTER      &none  &none  &none              &none                &none            &none
+&mt LSHFT SLASH  &kp N0        &kp PERIOD    &none         &none          &none          &none  &none                                                           &none
             >;
         };
     };
