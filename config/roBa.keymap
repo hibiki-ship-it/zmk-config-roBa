@@ -17,17 +17,14 @@
         status = "okay";
         device = <&trackball>;
         
-        // 修正点: OR演算子で無視されるのを防ぐため、X軸とY軸の反転を独立して確実に適用します
-        input-processors = 
-            <&zip_xy_transform INPUT_TRANSFORM_X_INVERT>,
-            <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>;
+        // 修正点: X軸とY軸を入れ替える処理（90度のズレを修正）
+        input-processors = <&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>;
 
         scroll {
             layers = <6>;
-            // スクロール時も同様に独立して反転させ、スクロール信号に変換＋減速
+            // スクロール時も同様に軸を入れ替え、スクロール信号に変換＋減速
             input-processors = 
-                <&zip_xy_transform INPUT_TRANSFORM_X_INVERT>,
-                <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
+                <&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>,
                 <&zip_xy_to_scroll_mapper>,
                 <&zip_scroll_scaler 1 20>;
         };
