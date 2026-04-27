@@ -17,17 +17,16 @@
         status = "okay";
         device = <&trackball>;
         
-        // 修正点: 軸の入れ替え（XY_SWAP）後に、上下（Y軸）の反転処理を追加
+        // 通常移動：軸入れ替え ＋ 上下（Y軸）反転
         input-processors = 
             <&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>,
             <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>;
 
         scroll {
             layers = <6>;
-            // スクロール時も同様に軸入れ替え＋Y軸反転を行い、スクロール信号に変換＋減速
+            // 修正点: スクロール時は軸入れ替えのみを行い、Y軸反転を解除して方向を修正
             input-processors = 
                 <&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>,
-                <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
                 <&zip_xy_to_scroll_mapper>,
                 <&zip_scroll_scaler 1 20>;
         };
