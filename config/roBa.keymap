@@ -17,14 +17,17 @@
         status = "okay";
         device = <&trackball>;
         
-        // 修正点: X軸とY軸を入れ替える処理（90度のズレを修正）
-        input-processors = <&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>;
+        // 修正点: 軸の入れ替え（XY_SWAP）後に、上下（Y軸）の反転処理を追加
+        input-processors = 
+            <&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>,
+            <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>;
 
         scroll {
             layers = <6>;
-            // スクロール時も同様に軸を入れ替え、スクロール信号に変換＋減速
+            // スクロール時も同様に軸入れ替え＋Y軸反転を行い、スクロール信号に変換＋減速
             input-processors = 
                 <&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>,
+                <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
                 <&zip_xy_to_scroll_mapper>,
                 <&zip_scroll_scaler 1 20>;
         };
