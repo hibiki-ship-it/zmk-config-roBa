@@ -140,21 +140,28 @@
         OSEWANI: OSEWANI {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp F13 &kp LS(O) &kp LS(S) &kp LS(E) &kp LS(W) &kp LS(A) &kp LS(N) &kp LS(I) &kp LS(N) &kp LS(A) &kp LS(T) &kp LS(T) &kp LS(E) &kp LS(O) &kp LS(R) &kp LS(I) &kp LS(M) &kp LS(A) &kp LS(S) &kp LS(U) &kp DOT &kp SPACE &kp RET>;
+            // 全体にディレイを入れ、IMEの切り替え待ちと変換の取りこぼしを防ぐ
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings = <&kp F13 &kp O &kp S &kp E &kp W &kp A &kp N &kp I &kp N &kp A &kp T &kp T &kp E &kp O &kp R &kp I &kp M &kp A &kp S &kp U &kp DOT &kp SPACE &kp RET>;
             label = "OSEWANI";
         };
 
         OTUKARE: OTUKARE {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp F13 &kp LS(O) &kp LS(T) &kp LS(U) &kp LS(K) &kp LS(A) &kp LS(R) &kp LS(E) &kp LS(S) &kp LS(A) &kp LS(M) &kp LS(A) &kp LS(D) &kp LS(E) &kp LS(S) &kp LS(U) &kp DOT &kp SPACE &kp RET>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings = <&kp F13 &kp O &kp T &kp U &kp K &kp A &kp R &kp E &kp S &kp A &kp M &kp A &kp D &kp E &kp S &kp U &kp DOT &kp SPACE &kp RET>;
             label = "OTUKARE";
         };
 
         YOROSIKU: YOROSIKU {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp F13 &kp LS(D) &kp LS(O) &kp LS(U) &kp LS(Z) &kp LS(O) &kp LS(Y) &kp LS(O) &kp LS(R) &kp LS(O) &kp LS(S) &kp LS(I) &kp LS(K) &kp LS(U) &kp LS(O) &kp LS(N) &kp LS(E) &kp LS(G) &kp LS(A) &kp LS(I) &kp LS(I) &kp LS(T) &kp LS(A) &kp LS(S) &kp LS(I) &kp LS(M) &kp LS(A) &kp LS(S) &kp LS(U) &kp DOT &kp SPACE &kp RET>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings = <&kp F13 &kp D &kp O &kp U &kp Z &kp O &kp Y &kp O &kp R &kp O &kp S &kp I &kp K &kp U &kp O &kp N &kp E &kp G &kp A &kp I &kp I &kp T &kp A &kp S &kp I &kp M &kp A &kp S &kp U &kp DOT &kp SPACE &kp RET>;
             label = "YOROSIKU";
         };
     };
