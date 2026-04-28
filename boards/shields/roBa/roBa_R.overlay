@@ -48,8 +48,8 @@
         status = "okay";
         compatible = "pixart,pmw3610";
         reg = <0>;
-        // 修正点: 通信速度をさらに半分（500kHz）に落とし、安定性を優先します
-        spi-max-frequency = <500000>;
+    
+        spi-max-frequency = <250000>;
         motion-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         zephyr,axis-x = <INPUT_REL_X>;
         zephyr,axis-y = <INPUT_REL_Y>;
