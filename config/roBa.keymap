@@ -212,7 +212,7 @@
             bindings = <
 &none           &none         &none     &none      &none                    &none  &none           &kp UP_ARROW    &none      &kp HOME
 &none           &none         &none     &none      &none  &none      &none  &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT  &kp END
-&kp LEFT_SHIFT  &OSEWANI      &OTUKARE  &YOROSIKU  &none  &none      &none  &none  &none           &mkp MB4        &mkp MB5   &none
+&kp LEFT_SHIFT  &OTUKARE      &OSEWANI  &YOROSIKU  &none  &none      &none  &none  &none           &mkp MB4        &mkp MB5   &none
 &none           &kp LEFT_WIN  &none     &none      &none  &none      &none  &none                                             &kp K_POWER
             >;
         };
