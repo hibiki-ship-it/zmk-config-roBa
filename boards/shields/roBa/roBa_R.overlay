@@ -39,9 +39,11 @@
 &spi0 {
     status = "okay";
     compatible = "nordic,nrf-spim";
+    
+    // 修正点: スリープ状態への移行を無効化し、常にdefault（アクティブ）に保ちます
     pinctrl-0 = <&spi0_default>;
-    pinctrl-1 = <&spi0_sleep>;
-    pinctrl-names = "default", "sleep";
+    pinctrl-names = "default";
+    
     cs-gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
 
     trackball: trackball@0 {
@@ -49,10 +51,10 @@
         compatible = "pixart,pmw3610";
         reg = <0>;
         
-        /* 通信速度は2MHz（2000000）など、正常に通信できる値に戻します */
+        /* 通信速度は2MHzのままで設定します */
         spi-max-frequency = <2000000>;
         
-        /* 感度（CPI）をここで設定します。環境に合わせて数値を調整してください */
+        /* 感度（CPI）の設定 */
         res-cpi = <1800>;
         
         motion-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
