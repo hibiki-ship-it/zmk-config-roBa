@@ -53,11 +53,11 @@
         compatible = "pixart,pmw3610";
         reg = <0>;
         
-        /* 通信速度は2MHz（2000000）で設定 */
-        spi-max-frequency = <2000000>;
+        /* 通信速度は2MHz（1000000）で設定 */
+        spi-max-frequency = <1000000>;
         
         /* 感度（CPI）の設定 */
-        res-cpi = <1800>;
+        res-cpi = <3200>;
         
         motion-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         zephyr,axis-x = <INPUT_REL_X>;
