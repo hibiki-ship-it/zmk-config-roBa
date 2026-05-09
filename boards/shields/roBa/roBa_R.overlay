@@ -49,11 +49,11 @@
         reg = <0>;
         spi-max-frequency = <1000000>;
         
-        /* マウス速度を松本さんご希望の 2000 に戻します */
+        /* マウス速度はご希望通り2000のままです */
         res-cpi = <2000>;
         
-        /* 割り込みピン設定（これにより高CPIでも安定します） */
-        irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        /* エラーの原因：標準ルールの motion-gpios に戻します */
+        motion-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         
         zephyr,axis-x = <INPUT_REL_X>;
         zephyr,axis-y = <INPUT_REL_Y>;
