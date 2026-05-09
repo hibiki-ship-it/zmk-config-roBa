@@ -29,8 +29,6 @@
             psels = <NRF_PSEL(SPIM_SCK, 0, 5)>,
                 <NRF_PSEL(SPIM_MOSI, 0, 4)>,
                 <NRF_PSEL(SPIM_MISO, 0, 4)>;
-            /* 修正点: ビルドを通すためにノードは残し、
-               low-power-enable; のみを削除してピンの電圧低下を防ぎます */
         };
     };
 };
@@ -42,24 +40,21 @@
     compatible = "nordic,nrf-spim";
     pinctrl-0 = <&spi0_default>;
     pinctrl-1 = <&spi0_sleep>;
-    
-    /* 修正点: コンパイラのルールに従い "sleep" を復活させます */
     pinctrl-names = "default", "sleep";
-    
     cs-gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
 
     trackball: trackball@0 {
         status = "okay";
         compatible = "pixart,pmw3610";
         reg = <0>;
-        
-        /* 通信速度は2MHz（1000000）で設定 */
         spi-max-frequency = <1000000>;
         
-        /* 感度（CPI）の設定 */
+        /* マウス速度を松本さんご希望の 2000 に戻します */
         res-cpi = <2000>;
         
-        motion-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        /* 割り込みピン設定（これにより高CPIでも安定します） */
+        irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        
         zephyr,axis-x = <INPUT_REL_X>;
         zephyr,axis-y = <INPUT_REL_Y>;
     };
