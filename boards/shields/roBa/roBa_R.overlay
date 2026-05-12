@@ -50,7 +50,7 @@
         spi-max-frequency = <1000000>;
         
         /* マウス速度はご希望通り2000のままです */
-        res-cpi = <2000>;
+        res-cpi = <1600>;
         
         /* エラーの原因：標準ルールの motion-gpios に戻します */
         motion-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
